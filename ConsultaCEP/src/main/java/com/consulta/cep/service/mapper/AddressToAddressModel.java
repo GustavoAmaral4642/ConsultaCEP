@@ -6,7 +6,6 @@ import com.consulta.cep.domain.Address;
 public class AddressToAddressModel {
     public static AddressModel map(Address address) {
         return AddressModel.builder()
-                .id(address.getId())
                 .cep(address.getCep())
                 .logradouro(address.getLogradouro())
                 .complemento(address.getComplemento())

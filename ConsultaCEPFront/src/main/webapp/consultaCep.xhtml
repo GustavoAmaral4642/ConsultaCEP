@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet name="primefaces-nova-dark/theme.css" />
+</h:head>
+
+<h:body>
+
+    <p:separator/>
+        <div class="card">
+            <h:form>
+
+                <p:outputLabel>
+                    Cadastro de Paciente:
+                </p:outputLabel>
+
+                <p:panel id="principalPanel" style="margin-top: 10px">
+                    <p:outputLabel>
+                        Nome do Paciente
+                    </p:outputLabel>
+                    <p:inputText title="Nome do Paciente" style="margin-right: 10px"/>
+
+                    <p:outputLabel>
+                        CEP do Paciente
+                    </p:outputLabel>
+                    <p:inputMask  title="CEP do Paciente" style="margin-right: 10px" mask="99999-999" value="${cepController.cep}"/>
+                    <p:commandButton value="Pesquisar" action="#{cepController.findCep}" update="principalPanel addressPanel" />
+                </p:panel>
+
+                <p:panel id="addressPanel" style="margin-top: 10px">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel>
+                            CEP:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.cep}"/>
+
+                        <p:outputLabel>
+                            Logradouro:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.logradouro}"/>
+
+                        <p:outputLabel>
+                            Complemento:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.complemento}"/>
+
+                        <p:outputLabel>
+                            Unidade:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.unidade}"/>
+
+                        <p:outputLabel>
+                            Bairro:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.bairro}"/>
+
+                        <p:outputLabel>
+                            Localidade:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.localidade}"/>
+
+                        <p:outputLabel>
+                            UF:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.uf}"/>
+
+                        <p:outputLabel>
+                            Estado:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.estado}"/>
+
+                        <p:outputLabel>
+                            Região:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.regiao}"/>
+
+                        <p:outputLabel>
+                            IBGE:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.ibge}"/>
+
+                        <p:outputLabel>
+                            GIA:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.gia}"/>
+
+                        <p:outputLabel>
+                            DDD:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.ddd}"/>
+
+                        <p:outputLabel>
+                            SIAFI:
+                        </p:outputLabel>
+                        <p:inputText value="#{cepController.cepModel.siafi}"/>
+
+                        <p:commandButton value="Salvar" />
+                        <p:commandButton value="Limpar" action="#{cepController.cleanCep}" update="addressPanel" />
+                    </p:panelGrid>
+                </p:panel>
+            </h:form>
+        </div>
+
+</h:body>
+</html>

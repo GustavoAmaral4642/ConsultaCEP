@@ -1,13 +1,15 @@
-package com.consulta.cep.service.model;
+package com.consulta.cep.front.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class AddressModel {
+@AllArgsConstructor
+public class CepModel {
 
     private String cep;
     private String logradouro;
@@ -22,4 +24,5 @@ public class AddressModel {
     private String gia;
     private String ddd;
     private String siafi;
+
 }
