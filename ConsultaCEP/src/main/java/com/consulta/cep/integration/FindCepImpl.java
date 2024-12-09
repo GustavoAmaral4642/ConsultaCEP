@@ -26,8 +26,7 @@ public class FindCepImpl implements FindCep{
 
     @Override
     public String find(String cep){
-//        String str = this.webClient.get().uri(cep + JSON).retrieve().bodyToMono(String.class).block();
-        String str = this.webClient.get().uri(cep).retrieve().bodyToMono(String.class).block();
-        return str;
+//      return this.webClient.get().uri(cep + JSON).retrieve().bodyToMono(String.class).block();
+        return this.webClient.get().uri(cep).retrieve().bodyToMono(String.class).block();
     }
 }

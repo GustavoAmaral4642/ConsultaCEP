@@ -5,7 +5,6 @@ import com.consulta.cep.domain.Client;
 import com.consulta.cep.repository.AddressRepository;
 import com.consulta.cep.repository.ClientRepository;
 import com.consulta.cep.service.ClientService;
-import com.consulta.cep.service.helper.ClientHelper;
 import com.consulta.cep.service.mapper.ClientToClientModel;
 
 import com.consulta.cep.service.model.ClientModel;
@@ -23,26 +22,33 @@ public class  ClientServiceImpl implements ClientService {
     @Autowired
     private AddressRepository addressRepository;
 
-    @Autowired
-    private ClientHelper clientHelper;
-
     @Override
     public List<ClientModel> getAllClients() {
-        List<Client> clients = clientRepository.findAll();
-        return ClientToClientModel.mapListClients(clients);
+        try {
+            List<Client> clients = clientRepository.findAll();
+            return ClientToClientModel.mapListClients(clients);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public ClientModel save(Client client) {
-        // Salva o cliente primeiro
-        Client savedClient = clientRepository.save(client);
+        try {
+            // Salva o cliente primeiro
+            Client savedClient = clientRepository.save(client);
 
-        // Associa o cliente salvo a cada endereço e salva os endereços
-        // necessario para não dar TransientPropertyValueException
-        for (Address address : savedClient.getAddresses()) {
-            address.setClient(savedClient); addressRepository.save(address);
+            // Associa o cliente salvo a cada endereço e salva os endereços
+            // necessario para não dar TransientPropertyValueException
+            for (Address address : savedClient.getAddresses()) {
+                address.setClient(savedClient); addressRepository.save(address);
+            }
+            return ClientToClientModel.mapClient(savedClient);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return ClientToClientModel.mapClient(savedClient);
+        return null;
     }
 
     @Override

@@ -10,6 +10,11 @@ public class MessagingService {
     }
 
     public void send(String topic, String key, String value) {
-        producer.sendMessage(topic, key, value);
+
+        try {
+            producer.sendMessage(topic, key, value);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -20,7 +20,11 @@ public class KafkaMessageProducer implements MessageProducer {
 
     @Override
     public void sendMessage(String topic, String key, String value) {
-        producer.send(new ProducerRecord<>(topic, key, value));
+        try {
+            producer.send(new ProducerRecord<>(topic, key, value));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void close() {

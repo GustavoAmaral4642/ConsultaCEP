@@ -21,10 +21,14 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public void processMessage(String message) {
-        Message msg = new Message();
-        msg.setRegister("Registro de pesquisa de endereço realizado com sucesso");
-        msg.setTime(LocalDateTime.now().toString());
-        msg.setContent(message);
-        messageRepository.save(msg);
+        try {
+            Message msg = new Message();
+            msg.setRegister("Registro de pesquisa de endereço realizado com sucesso");
+            msg.setTime(LocalDateTime.now().toString());
+            msg.setContent(message);
+            messageRepository.save(msg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

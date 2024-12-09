@@ -18,6 +18,10 @@ public class KafkaMessageConsumer implements MessageConsumer {
     @KafkaListener(topics = "my-topic", groupId = "my-group")
     @Override
     public void consume(String message) {
-        messageService.processMessage(message);
+        try{
+            messageService.processMessage(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
