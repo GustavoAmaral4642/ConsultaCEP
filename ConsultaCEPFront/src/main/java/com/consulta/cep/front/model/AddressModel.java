@@ -1,6 +1,8 @@
-package com.consulta.cep.service.model;
+package com.consulta.cep.front.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.springframework.context.annotation.Lazy;
 
 @Getter
 @Setter
@@ -8,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddressModel {
+
     private String cep;
     private String logradouro;
     private String complemento;
@@ -22,4 +25,6 @@ public class AddressModel {
     private String ddd;
     private String siafi;
 
+    @JsonBackReference
+    private ClientModel client;
 }

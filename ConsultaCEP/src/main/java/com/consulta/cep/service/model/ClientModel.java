@@ -13,5 +13,5 @@ public class ClientModel {
 
     private Long id;
     private String name;
-    private List<AddressModel> adresses;
+    private List<AddressModel> addresses;
 }

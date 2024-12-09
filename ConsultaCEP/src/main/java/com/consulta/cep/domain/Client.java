@@ -14,6 +14,7 @@ import javax.persistence.Column;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -33,5 +34,6 @@ public class Client {
     private String name;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Address> adresses;
+    private List<Address> addresses;
+
 }

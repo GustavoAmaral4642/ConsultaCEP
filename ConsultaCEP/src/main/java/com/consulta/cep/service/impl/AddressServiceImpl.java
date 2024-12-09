@@ -1,7 +1,7 @@
 package com.consulta.cep.service.impl;
 
 import com.consulta.cep.domain.Address;
-import com.consulta.cep.integration.FindCep;
+import com.consulta.cep.integration.FindCepImpl;
 import com.consulta.cep.repository.AddressRepository;
 import com.consulta.cep.service.AddressService;
 import com.consulta.cep.service.mapper.StringBuilderToAddressModel;
@@ -15,11 +15,14 @@ public class AddressServiceImpl implements AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
-    @Override
-    public AddressModel getCep(String id) {
+    @Autowired
+    private FindCepImpl findCep;
 
-        String cepFound = FindCep.find(id.toString());
-        SentMessageKafka.sent(cepFound.toString());
+    @Override
+    public AddressModel getCep(String cep) {
+
+        String cepFound = findCep.find(cep);
+        SentMessageKafka.sent(cepFound);
 
         return StringBuilderToAddressModel.map(cepFound);
     }

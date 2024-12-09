@@ -4,7 +4,7 @@ import com.consulta.cep.service.model.AddressModel;
 import com.consulta.cep.domain.Address;
 
 public class AddressToAddressModel {
-    public static AddressModel map(Address address) {
+    public static AddressModel mapAddress(Address address) {
         return AddressModel.builder()
                 .cep(address.getCep())
                 .logradouro(address.getLogradouro())
